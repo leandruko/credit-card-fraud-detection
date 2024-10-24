@@ -1,5 +1,5 @@
 ---
-title: "Proyecto productividad trabajo remoto"
+title: "Proyecto deteccion de fraude en tarjeta de credito"
 author: "Leandro Soto Miranda"
 date: "2024-10-24"
 format: 
