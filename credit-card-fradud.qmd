@@ -123,6 +123,28 @@ for columna in columnas_categoricas:
 
 ```
 
+### Verificacion sobre el balance de los datos de la variable IsFraud, para posterior tratamiento
+```{python}
+variable = 'IsFraud'
+balance = df[variable].value_counts(normalize=True) * 100
+
+print(f"Distribución de '{variable}':")
+print(balance)
+
+# Visualizar distribución con un gráfico de barras
+plt.figure(figsize=(8, 5))
+sns.countplot(data=df, x=variable, order=balance.index, palette="viridis")
+plt.title(f"Distribución de la variable '{variable}'")
+plt.xlabel(variable)
+plt.ylabel("Frecuencia")
+plt.xticks(rotation=45)
+plt.show()
+
+```
+
+
+
+
 ## Verificar si hay patrones o relaciones presentes entre variables
 ```{python}
 sns.scatterplot(x='Productivity_Score', y='Employment_Type', data=df)
