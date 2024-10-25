@@ -148,6 +148,8 @@ print("\nValores nulos por columna:")
 print(df.isnull().sum())
 ```
 
+
+
 ### Verificacion sobre el balance de los datos de la variable IsFraud, para posterior tratamiento
 - Con esto tenemos un problema, nuestra variable objetivo esta demasiado desbalanceada, po lo que tendremos que aplicar balanceo de datos ya bien sea con oversample o undersample a nuestra variable minoritaria
 ```{python}
@@ -175,7 +177,7 @@ from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
 
 # Dividir en variables predictoras y objetivo
-X = df.drop('IsFraud', axis=1)
+X = df.drop(columns=['IsFraud','TransactionDate','TransactionType','Location'])
 y = df['IsFraud']
 
 # Aplicar SMOTE
@@ -190,6 +192,11 @@ print("Distribución después de SMOTE:\n", df_smote['IsFraud'].value_counts(nor
 
 
 ```
+
+```{python}
+df
+```
+
 
 
 ### Ponderación de Clases
@@ -209,8 +216,6 @@ model_weighted.fit(X_train, y_train)
 # Evaluación
 accuracy = model_weighted.score(X_test, y_test)
 print(f"Accuracy con ponderación de clases: {accuracy}")
-
-
 
 ```
 
