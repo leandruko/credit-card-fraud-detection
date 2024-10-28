@@ -116,10 +116,15 @@ def analizar_variable_categorica(df, columna):
     plt.xticks(rotation=45)
     plt.show()
 
-# Aplicar la función a todas las columnas categóricas del dataframe
-columnas_categoricas = df.select_dtypes(include=['object']).columns
+# Columnas categóricas a excluir
+columnas_a_excluir = ['TransactionDate']  # Cambia los nombres de las columnas que desees excluir
+
+# Aplicar la función a todas las columnas categóricas excepto las excluidas
+columnas_categoricas = [col for col in df.select_dtypes(include=['object']).columns if col not in columnas_a_excluir]
+
 for columna in columnas_categoricas:
     analizar_variable_categorica(df, columna)
+
 
 ```
 
