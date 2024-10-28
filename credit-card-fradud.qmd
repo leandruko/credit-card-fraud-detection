@@ -197,8 +197,6 @@ print("Distribución después de SMOTE:\n", df_smote['IsFraud'].value_counts(nor
 df
 ```
 
-
-
 ### Ponderación de Clases
 ```{python}
 
