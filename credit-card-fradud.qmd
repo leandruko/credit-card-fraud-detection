@@ -206,38 +206,9 @@ for column in df.columns:
 le = LabelEncoder()
 df['Parental_Involvement'] = le.fit_transform(df['Parental_Involvement'].astype(str))
 
-df['Access_to_Resources'] = le.fit_transform(df['Access_to_Resources'].astype(str))
-
-df['Motivation_Level'] = le.fit_transform(df['Motivation_Level'].astype(str))
-
-df['Family_Income'] = le.fit_transform(df['Family_Income'].astype(str))
-
-df['Teacher_Quality'] = le.fit_transform(df['Teacher_Quality'].astype(str))
-
-df['Peer_Influence'] = le.fit_transform(df['Peer_Influence'].astype(str))
-
-df['Parental_Education_Level'] = le.fit_transform(df['Parental_Education_Level'].astype(str))
-
-df['Distance_from_Home'] = le.fit_transform(df['Distance_from_Home'].astype(str))
-
 # datos sin outlayers
 
 df_clean['Parental_Involvement'] = le.fit_transform(df_clean['Parental_Involvement'].astype(str))
-
-df_clean['Access_to_Resources'] = le.fit_transform(df_clean['Access_to_Resources'].astype(str))
-
-df_clean['Motivation_Level'] = le.fit_transform(df_clean['Motivation_Level'].astype(str))
-
-df_clean['Family_Income'] = le.fit_transform(df_clean['Family_Income'].astype(str))
-
-df_clean['Teacher_Quality'] = le.fit_transform(df_clean['Teacher_Quality'].astype(str))
-
-df_clean['Peer_Influence'] = le.fit_transform(df_clean['Peer_Influence'].astype(str))
-
-df_clean['Parental_Education_Level'] = le.fit_transform(df_clean['Parental_Education_Level'].astype(str))
-
-df_clean['Distance_from_Home'] = le.fit_transform(df_clean['Distance_from_Home'].astype(str))
-
 ```
 
 ## OneHotEncoder
