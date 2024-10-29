@@ -128,22 +128,6 @@ for columna in columnas_categoricas:
 ```
 
 ## Verificar si hay patrones o relaciones presentes entre variables
-```{python}
-sns.scatterplot(x='Productivity_Score', y='Employment_Type', data=df)
-plt.title('Relación entre Horas de Estudio y Puntuación de Examen')
-plt.xlabel('Employment_Type')
-plt.ylabel('Puntuación de Examen')
-plt.show()
-
-```
-
-```{python}
-sns.scatterplot(x='Attendance', y='Exam_Score', data=df)
-plt.title('Relación entre Horas de Estudio y Puntuación de Examen')
-plt.xlabel('Horas de Estudio')
-plt.ylabel('Puntuación de Examen')
-plt.show()
-```
 
 ## Verificar si hay valores nulos en el dataset
 ### Corrección de valores nulos presentes en el dataset
@@ -153,8 +137,6 @@ print(df.isnull().sum())
 ```
 
 # Procesamiento de datos
-
-
 # Verificar si hay valores atípicos
 ```{python}
 def generar_boxplot(df, columna):
