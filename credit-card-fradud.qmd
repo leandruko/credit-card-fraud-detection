@@ -117,9 +117,8 @@ def analizar_variable_categorica(df, columna):
     plt.show()
 
 # Columnas categóricas a excluir
-columnas_a_excluir = ['TransactionDate']  # Cambia los nombres de las columnas que desees excluir
+columnas_a_excluir = ['TransactionDate']
 
-# Aplicar la función a todas las columnas categóricas excepto las excluidas
 columnas_categoricas = [col for col in df.select_dtypes(include=['object']).columns if col not in columnas_a_excluir]
 
 for columna in columnas_categoricas:
@@ -153,11 +152,10 @@ print("\nValores nulos por columna:")
 print(df.isnull().sum())
 ```
 
-
-
 ### Verificacion sobre el balance de los datos de la variable IsFraud, para posterior tratamiento
-- Con esto tenemos un problema, nuestra variable objetivo esta demasiado desbalanceada, po lo que tendremos que aplicar balanceo de datos ya bien sea con oversample o undersample a nuestra variable minoritaria
+- Con esto tenemos un problema, nuestra variable objetivo esta demasiado desbalanceada, po lo que tendremos que aplicar balanceo de datos ya bien sea con oversample (SMOTE) a la variable minoritaria o undersample a nuestra variable mayoritaria
 ```{python}
+
 variable = 'IsFraud'
 balance = df[variable].value_counts(normalize=True) * 100
 
@@ -199,7 +197,7 @@ print("Distribución después de SMOTE:\n", df_smote['IsFraud'].value_counts(nor
 ```
 
 ```{python}
-df
+df_smote
 ```
 
 ### Ponderación de Clases
@@ -243,6 +241,10 @@ df_smote_undersample['IsFraud'] = y_smote_undersample
 
 print("Distribución después de SMOTE + Submuestreo:\n", df_smote_undersample['IsFraud'].value_counts(normalize=True))
 
+```
+
+```{python}
+df_smote_undersample
 ```
 
 # Verificar si hay valores atípicos
