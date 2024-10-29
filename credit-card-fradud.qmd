@@ -186,6 +186,7 @@ print(df_clean.describe())
 ```
 
 - Lo que realizamos aqui es explir nuestra varialbe objetivo la cual es IsFraud ya que uno de los princip[ales problemas es que al tenere pocos datos para uno de los valores lo clasificaba como outlayer y a la hora de apklciarldo estos datos se eliminaban, si bien son pocos datos lo que se iban eliminando siguen siendo importantes para la posterior balanceo de datos]
+
 ## Preparación de datos
 ### Vamos a realizar el tratamiento de datos pasos a realizar
 ### Convertir datos categóricos a numéricos para esto vamos a aplicar one hot encoder y label conder dependiendo a tipo de dato
@@ -200,25 +201,19 @@ for column in df.columns:
 ```
 
 ## LabelEncoder
-### Variables
 
-```{python}
-le = LabelEncoder()
-df['Parental_Involvement'] = le.fit_transform(df['Parental_Involvement'].astype(str))
-
-# datos sin outlayers
-
-df_clean['Parental_Involvement'] = le.fit_transform(df_clean['Parental_Involvement'].astype(str))
-```
+### Variables Ninguna
 
 ## OneHotEncoder
 
-### Variables
+### Variables: Location, TransactionType
 ```{python}
 # Aplicar One-Hot Encoding
-df = pd.get_dummies(df, columns=['Employment_Type'])
+df = pd.get_dummies(df, columns=['Location'])
+df = pd.get_dummies(df, columns=['TransactionType'])
 # datos sin outlayers
-df_clean = pd.get_dummies(df_clean, columns=['Employment_Type'])
+df_clean = pd.get_dummies(df_clean, columns=['Location'])
+df_clean = pd.get_dummies(df_clean, columns=['TransactionType'])
 
 ```
 
