@@ -334,7 +334,7 @@ plt.show()
 correlation_matrix = df.corr()
 
 # Filtrar solo las correlaciones con la variable objetivo
-target_corr = correlation_matrix['Productivity_Score'].sort_values(ascending=False)
+target_corr = correlation_matrix['IsFraud'].sort_values(ascending=False)
 print("Correlación de cada variable con 'Productivity_Score':\n", target_corr)
 ```
 
@@ -350,3 +350,42 @@ print(X.columns)
 ```
 
 ## Predicción sin datos atípicos
+
+
+```{python}
+from sklearn.model_selection import train_test_split
+
+# Seleccionar características (features) y la variable objetivo (target)
+X = df.drop(columns=['IsFraud'])
+y = df['IsFraud']
+
+# Dividir los datos en conjuntos de entrenamiento y prueba
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+
+```{python}
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Crear el modelo de Regresión Logística
+model = LogisticRegression()
+
+# Entrenar el modelo
+model.fit(X_train, y_train)
+
+# Predecir en los datos de prueba
+y_pred = model.predict(X_test)
+
+# Evaluar el modelo
+accuracy_RL = accuracy_score(y_test, y_pred)
+matrix_RL = confusion_matrix(y_test, y_pred)
+reporte_RL = classification_report(y_test, y_pred)
+
+print(f'Precisión del modelo: {accuracy_RL:.2f}')
+print('Matriz de confusión:')
+print(matrix_RL)
+print('Reporte de clasificación:')
+print(reporte_RL)
+
+```
