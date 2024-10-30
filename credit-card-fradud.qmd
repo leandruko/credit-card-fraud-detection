@@ -320,7 +320,7 @@ plt.show()
 
 ```{python}
 # Calcular la matriz de correlación
-corr_matrix = df.corr()
+corr_matrix = df_balanced.corr()
 
 # Generar el mapa de calor
 plt.figure(figsize=(10, 8))
@@ -331,7 +331,7 @@ plt.show()
 
 ```{python}
 # Calcular la matriz de correlación
-correlation_matrix = df.corr()
+correlation_matrix = df_balanced.corr()
 
 # Filtrar solo las correlaciones con la variable objetivo
 target_corr = correlation_matrix['IsFraud'].sort_values(ascending=False)
@@ -356,8 +356,8 @@ print(X.columns)
 from sklearn.model_selection import train_test_split
 
 # Seleccionar características (features) y la variable objetivo (target)
-X = df.drop(columns=['IsFraud'])
-y = df['IsFraud']
+X = df_balanced.drop(columns=['IsFraud'])
+y = df_balanced['IsFraud']
 
 # Dividir los datos en conjuntos de entrenamiento y prueba
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
