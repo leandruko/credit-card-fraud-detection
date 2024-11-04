@@ -185,7 +185,7 @@ print(df_clean.describe())
 
 ```
 
-- Lo que realizamos aqui es explir nuestra varialbe objetivo la cual es IsFraud ya que uno de los princip[ales problemas es que al tenere pocos datos para uno de los valores lo clasificaba como outlayer y a la hora de apklciarldo estos datos se eliminaban, si bien son pocos datos lo que se iban eliminando siguen siendo importantes para la posterior balanceo de datos]
+- Lo que realizamos aqui es explir nuestra varialbe objetivo la cual es IsFraud ya que uno de los principales problemas es que al tenere pocos datos para uno de los valores lo clasificaba como outlayer y a la hora de apklciarldo estos datos se eliminaban, si bien son pocos datos lo que se iban eliminando siguen siendo importantes para la posterior balanceo de datos
 
 ## Preparación de datos
 ### Vamos a realizar el tratamiento de datos pasos a realizar
@@ -254,11 +254,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
 # Dividir en variables predictoras (X) y la variable objetivo (y)
-X = df.drop(columns=["IsFraud", "TransactionDate", "TransactionType","Location"])
+X = df.drop(columns=["IsFraud", "TransactionDate"])
 y = df["IsFraud"]
 
 # Dividir en conjunto de entrenamiento y prueba
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Aplicación de class_weight para un modelo (ejemplo con RandomForest)
 model_rf = RandomForestClassifier(class_weight="balanced", random_state=42)
@@ -319,6 +319,12 @@ plt.show()
 ```
 
 ```{python}
+df_balanced
+
+```
+
+
+```{python}
 # Calcular la matriz de correlación
 corr_matrix = df_balanced.corr()
 
@@ -350,8 +356,6 @@ print(X.columns)
 ```
 
 ## Predicción sin datos atípicos
-
-
 ```{python}
 from sklearn.model_selection import train_test_split
 
@@ -415,31 +419,5 @@ print('Matriz de confusión:')
 print(matrix_AD)
 print('Reporte de clasificación:')
 print(reporte_AD)
-
-```
-
-```{python}
-from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
-
-# Crear el modelo de Support Vector Machine
-model = SVC()
-
-# Entrenar el modelo
-model.fit(X_train, y_train)
-
-# Predecir en los datos de prueba
-y_pred = model.predict(X_test)
-
-# Evaluar el modelo
-accuracy_SVM = accuracy_score(y_test, y_pred)
-matrix_SVM = confusion_matrix(y_test, y_pred)
-reporte_SVM = classification_report(y_test, y_pred)
-
-print(f'Precisión del modelo: {accuracy_SVM:.2f}')
-print('Matriz de confusión:')
-print(matrix_SVM)
-print('Reporte de clasificación:')
-print(reporte_SVM)
 
 ```

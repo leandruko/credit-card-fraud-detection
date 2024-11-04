@@ -21,7 +21,7 @@
         "\n",
         "## 2. Recopilación de datos\n"
       ],
-      "id": "a20412cb"
+      "id": "af40e743"
     },
     {
       "cell_type": "code",
@@ -66,7 +66,7 @@
         "tipos = df.dtypes\n",
         "print(\"\\nTipos de datos presentes en el dataset:\\n\",tipos)"
       ],
-      "id": "96f9784e",
+      "id": "2348d98a",
       "execution_count": null,
       "outputs": []
     },
@@ -77,7 +77,7 @@
         "## 3. Análisis de datos por Variable\n",
         "## Análisis de datos cuantitativos\n"
       ],
-      "id": "a91f0c8f"
+      "id": "c690a79f"
     },
     {
       "cell_type": "code",
@@ -112,7 +112,7 @@
         "for columna in columnas_cuantitativas:\n",
         "    analizar_variable_cuantitativa(df, columna)"
       ],
-      "id": "e713ba5f",
+      "id": "d0433407",
       "execution_count": null,
       "outputs": []
     },
@@ -122,7 +122,7 @@
       "source": [
         "## Análisis de datos cualitativos\n"
       ],
-      "id": "8a71f9bf"
+      "id": "f3270241"
     },
     {
       "cell_type": "code",
@@ -160,7 +160,7 @@
         "for columna in columnas_categoricas:\n",
         "    analizar_variable_categorica(df, columna)\n"
       ],
-      "id": "5499ea9e",
+      "id": "265ee523",
       "execution_count": null,
       "outputs": []
     },
@@ -173,7 +173,7 @@
         "## Verificar si hay valores nulos en el dataset\n",
         "### Corrección de valores nulos presentes en el dataset"
       ],
-      "id": "a34c598f"
+      "id": "33387b5b"
     },
     {
       "cell_type": "code",
@@ -182,7 +182,7 @@
         "print(\"\\nValores nulos por columna:\")\n",
         "print(df.isnull().sum())"
       ],
-      "id": "dfcba7c7",
+      "id": "4a27e660",
       "execution_count": null,
       "outputs": []
     },
@@ -193,7 +193,7 @@
         "# Procesamiento de datos\n",
         "# Verificar si hay valores atípicos"
       ],
-      "id": "7b5b9eb3"
+      "id": "b02f9d93"
     },
     {
       "cell_type": "code",
@@ -211,7 +211,7 @@
         "for columna in columnas_numericas:\n",
         "    generar_boxplot(df, columna)"
       ],
-      "id": "2f8aa4e8",
+      "id": "a2f500d8",
       "execution_count": null,
       "outputs": []
     },
@@ -221,7 +221,7 @@
       "source": [
         "- Para el tratamiento de datos atípicos lo que vamos a realizar es la imputación de ellos mediante el método intercuartílico, pero también vamos a generar un dataset sin realizar ningún tratamiento de los datos outlayers presentes en el dataset para realizar pruebas posteriormente en la aplicación de modelos de machine learning para ver cuanta diferencia hay entre ambos casos."
       ],
-      "id": "0c7d2864"
+      "id": "311120b6"
     },
     {
       "cell_type": "code",
@@ -255,7 +255,7 @@
         "print(\"\\nDatos después de la limpieza:\")\n",
         "print(df_clean.describe())"
       ],
-      "id": "f702100d",
+      "id": "9d534320",
       "execution_count": null,
       "outputs": []
     },
@@ -270,7 +270,7 @@
         "### Convertir datos categóricos a numéricos para esto vamos a aplicar one hot encoder y label conder dependiendo a tipo de dato\n",
         "### Además de convertir los datos categóricos en general para aplicar estos datos en modelos de machine learning, además de verificar el balanceo de datos y aplicación de técnicas para corregir variables con outlayers\n"
       ],
-      "id": "f93ba77b"
+      "id": "bc8c2d77"
     },
     {
       "cell_type": "code",
@@ -282,7 +282,7 @@
         "    print(unique_values)\n",
         "    print(\"\\n------------------------------------\\n\")"
       ],
-      "id": "3a17e59c",
+      "id": "f9605580",
       "execution_count": null,
       "outputs": []
     },
@@ -298,7 +298,7 @@
         "\n",
         "### Variables: Location, TransactionType"
       ],
-      "id": "8ae85e70"
+      "id": "1aeb12f9"
     },
     {
       "cell_type": "code",
@@ -311,7 +311,7 @@
         "df_clean = pd.get_dummies(df_clean, columns=['Location'])\n",
         "df_clean = pd.get_dummies(df_clean, columns=['TransactionType'])"
       ],
-      "id": "c82920b7",
+      "id": "1c552e54",
       "execution_count": null,
       "outputs": []
     },
@@ -325,7 +325,7 @@
         "    print(unique_values)\n",
         "    print(\"\\n------------------------------------\\n\")"
       ],
-      "id": "094764f6",
+      "id": "736b7954",
       "execution_count": null,
       "outputs": []
     },
@@ -336,7 +336,7 @@
         "### Verificacion sobre el balance de los datos de la variable IsFraud, para posterior tratamiento\n",
         "- Con esto tenemos un problema, nuestra variable objetivo esta demasiado desbalanceada, po lo que tendremos que aplicar balanceo de datos ya bien sea con oversample (SMOTE) a la variable minoritaria o undersample a nuestra variable mayoritaria"
       ],
-      "id": "a5dce0a8"
+      "id": "cf85bd1d"
     },
     {
       "cell_type": "code",
@@ -357,7 +357,7 @@
         "plt.xticks(rotation=45)\n",
         "plt.show()"
       ],
-      "id": "6446bc90",
+      "id": "0cd06946",
       "execution_count": null,
       "outputs": []
     },
@@ -367,7 +367,7 @@
       "source": [
         "### Aplicación de Class Weighting en el Modelo"
       ],
-      "id": "7b7dc31d"
+      "id": "b3faa3e9"
     },
     {
       "cell_type": "code",
@@ -392,7 +392,7 @@
         "model_lr = LogisticRegression(class_weight=\"balanced\", random_state=42)\n",
         "model_lr.fit(X_train, y_train)"
       ],
-      "id": "be5b5d45",
+      "id": "b28cce08",
       "execution_count": null,
       "outputs": []
     },
@@ -402,7 +402,7 @@
       "source": [
         "### Combination of Oversampling (con RandomOverSampler) y Class Weighting\n"
       ],
-      "id": "60121ffa"
+      "id": "d2169dc5"
     },
     {
       "cell_type": "code",
@@ -433,7 +433,7 @@
         "print(\"Distribución después del balanceo:\")\n",
         "print(df_balanced[\"IsFraud\"].value_counts())"
       ],
-      "id": "d0e8c95b",
+      "id": "2596b15f",
       "execution_count": null,
       "outputs": []
     },
@@ -456,7 +456,7 @@
         "plt.xticks(rotation=45)\n",
         "plt.show()"
       ],
-      "id": "b25041cb",
+      "id": "58c2e42f",
       "execution_count": null,
       "outputs": []
     },
@@ -473,7 +473,7 @@
         "plt.title('Mapa de calor de la correlación entre variables')\n",
         "plt.show()"
       ],
-      "id": "21af7a5b",
+      "id": "b1fb98e2",
       "execution_count": null,
       "outputs": []
     },
@@ -488,7 +488,7 @@
         "target_corr = correlation_matrix['IsFraud'].sort_values(ascending=False)\n",
         "print(\"Correlación de cada variable con 'Productivity_Score':\\n\", target_corr)"
       ],
-      "id": "45d25539",
+      "id": "baf85c4e",
       "execution_count": null,
       "outputs": []
     },
@@ -500,7 +500,7 @@
         "\n",
         "## Predicción con datos atípicos\n"
       ],
-      "id": "e85de44d"
+      "id": "a28b5040"
     },
     {
       "cell_type": "code",
@@ -510,7 +510,7 @@
         "print(\"Variables utilizadas en el modelo:\")\n",
         "print(X.columns)"
       ],
-      "id": "7cf277e6",
+      "id": "8217e69a",
       "execution_count": null,
       "outputs": []
     },
@@ -520,7 +520,7 @@
       "source": [
         "## Predicción sin datos atípicos\n"
       ],
-      "id": "2b2ccbd2"
+      "id": "47e447fc"
     },
     {
       "cell_type": "code",
@@ -535,7 +535,7 @@
         "# Dividir los datos en conjuntos de entrenamiento y prueba\n",
         "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)"
       ],
-      "id": "e3951123",
+      "id": "ec5b2644",
       "execution_count": null,
       "outputs": []
     },
@@ -566,7 +566,7 @@
         "print('Reporte de clasificación:')\n",
         "print(reporte_RL)"
       ],
-      "id": "f5773a26",
+      "id": "d9a3037d",
       "execution_count": null,
       "outputs": []
     },
@@ -598,7 +598,7 @@
         "print('Reporte de clasificación:')\n",
         "print(reporte_AD)"
       ],
-      "id": "969820d0",
+      "id": "e8081e2c",
       "execution_count": null,
       "outputs": []
     },
@@ -629,7 +629,7 @@
         "print('Reporte de clasificación:')\n",
         "print(reporte_SVM)"
       ],
-      "id": "79bd191a",
+      "id": "7b0e6d6c",
       "execution_count": null,
       "outputs": []
     }
