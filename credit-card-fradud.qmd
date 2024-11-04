@@ -421,3 +421,48 @@ print('Reporte de clasificación:')
 print(reporte_AD)
 
 ```
+# Conclusiones finales
+
+### Comentarios y Comparación de los Modelos
+Modelo Inicial:
+
+- Precisión: 0.52, lo que indica un rendimiento poco satisfactorio en términos de clasificaciones correctas.
+- Matriz de Confusión: En el primer modelo, hay un alto número de falsos negativos (11,090), lo cual significa que muchos fraudes no fueron detectados. Esto es crítico en un contexto de detección de fraude, donde es importante minimizar la cantidad de fraudes no detectados.
+Recall: El recall del primer modelo para la clase de fraude es bajo, lo cual sugiere que no identifica correctamente los fraudes en una gran cantidad de casos. Esta deficiencia limita la utilidad del modelo en aplicaciones donde los falsos negativos pueden tener altos costos.
+Modelo Mejorado:
+
+- Precisión: 0.99, un rendimiento significativamente mejorado, lo que muestra que el modelo casi siempre clasifica correctamente ambas clases.
+Matriz de Confusión: La reducción de falsos negativos a 0 y falsos positivos a 266 muestra que el modelo detecta casi todos los fraudes con una gran exactitud.
+Recall y F1-Score: Ambos alcanzan 0.99 y 1.00 para la clase de fraude, lo que significa que el modelo no omite casos de fraude y mantiene una excelente precisión al clasificar.
+Comparación Global:
+
+- El segundo modelo supera claramente al primero en todas las métricas relevantes, especialmente en la detección de fraudes (FN = 0). Esto demuestra una mejora significativa en la precisión y confiabilidad para el objetivo final.
+Conclusiones
+- El primer modelo tiene un desempeño limitado, con un recall y precisión bajos en la clase de fraude. Esto muestra una capacidad insuficiente para detectar fraudes, con un alto riesgo de omitir casos de interés.
+- El segundo modelo muestra un rendimiento excepcionalmente alto, lo que sugiere que las técnicas de balanceo y otros ajustes han ayudado a mejorar la capacidad del modelo para identificar fraudes con precisión.
+Aunque el segundo modelo parece ser efectivo en términos de métricas, es importante considerar el contexto de producción y el potencial de generalización para evitar un sobreajuste a los datos de entrenamiento.
+
+
+### Recomendaciones para Mejoras Futuras
+Pruebas en Datos Reales:
+
+- Evalúa el modelo en un conjunto de datos real o en datos de producción para confirmar que su rendimiento se mantenga. Esto es importante para asegurarse de que el modelo generaliza bien fuera del dataset balanceado de entrenamiento.
+Pruebas de Robustez:
+
+- Implementa técnicas de validación cruzada y utiliza métricas adicionales como el área bajo la curva ROC (AUC-ROC) para tener una mejor medida del rendimiento y evitar resultados sesgados.
+Ingeniería de Características Adicionales:
+
+- Analiza la posibilidad de incorporar nuevas características que puedan capturar mejor los patrones de fraude, como interacciones entre variables o estadísticas de transacciones.
+Ajuste Fino de Modelos:
+
+- Explora ajustes de hiperparámetros para el modelo, especialmente en el Random Forest y el Stacking Regressor, utilizando herramientas de optimización como GridSearchCV o RandomizedSearchCV para obtener los mejores resultados sin sobreajustar.
+Experimentar con Técnicas Avanzadas de Balanceo:
+
+- Aunque se obtuvo un buen resultado con el balanceo actual, puedes probar técnicas como ADASYN o BalancedBaggingClassifier para comparar y asegurar la estabilidad del modelo ante diferentes métodos de balanceo.
+Al implementar estas recomendaciones, podrías obtener un modelo más robusto y confiable, especialmente en un entorno en el que los datos reales pueden ser considerablemente diferentes de los datos de entrenamiento.
+
+
+
+
+
+
